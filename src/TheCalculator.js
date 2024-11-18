@@ -395,7 +395,7 @@ export default function TheCalculator() {
           height: isMobile ? "70px" : "80px", // Ajuste conforme necessário
           width: "auto",
           position: isMobile ? "static" : "absolute", // Posicionamento absoluto
-          top: isMobile ? "-15px" : "25px", // Ajuste conforme necessário
+          top: isMobile ? "auto" : "25px", // Ajuste conforme necessário
           right: isMobile ? "auto" : "20px", // Ajuste conforme necessário
           transform: isMobile ? "translateX(160%)" : "translateX(-440%)", // Centraliza verticalmente
           marginBottom: isMobile ? "15px" : "0",
