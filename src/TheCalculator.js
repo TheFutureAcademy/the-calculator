@@ -391,11 +391,11 @@ export default function TheCalculator() {
         src="/the-future-academy-logo-calculator.png" // Atualize com o caminho correto do seu logo
         alt="Logo da Empresa"
         style={{
-          marginTop: isMobile ? "0" : "0", // Adicionar esta linha
+          marginTop: isMobile ? "10px" : "0", // Adicionar esta linha
           height: isMobile ? "70px" : "80px", // Ajuste conforme necessário
           width: "auto",
           position: isMobile ? "static" : "absolute", // Posicionamento absoluto
-          top: isMobile ? "auto" : "25px", // Ajuste conforme necessário
+          top: isMobile ? "15px" : "25px", // Ajuste conforme necessário
           right: isMobile ? "auto" : "20px", // Ajuste conforme necessário
           transform: isMobile ? "translateX(160%)" : "translateX(-440%)", // Centraliza verticalmente
           marginBottom: isMobile ? "15px" : "0",
