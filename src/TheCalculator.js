@@ -17,7 +17,19 @@ const globalStyles = `
     min-height: 100vh;
     width: 100%;
   }
-`;
+
+  @media (max-width: 768px) {
+    body {
+      font-size: 14px;
+    }
+
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+`; // Note o ponto e vírgula aqui
 
 const inputStyles = `
   .input-container {
@@ -37,7 +49,36 @@ const inputStyles = `
     box-sizing: border-box;
     appearance: none;
   }
-`;
+
+  select.input-field {
+    background-color: #2c2c2e;
+    color: white;
+    cursor: pointer;
+    padding-right: 30px;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px top 50%;
+    background-size: 12px auto;
+  }
+
+  select.input-field option {
+    background-color: #1c1c1e;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .input-field {
+      font-size: 16px;
+      min-height: 44px;
+      padding: 10px 15px;
+    }
+    
+    select.input-field {
+      padding-right: 35px;
+      background-position: right 15px top 50%;
+    }
+  }
+`; // Note o ponto e vírgula aqui
 
 const styleSheet = document.createElement("style");
 styleSheet.innerText = globalStyles + inputStyles;
@@ -221,6 +262,7 @@ export default function TheCalculator() {
   const [selectedFeature, setSelectedFeature] = useState("");
   const [generations, setGenerations] = useState("");
   const [exchangeRate, setExchangeRate] = useState("5,00");
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [availablePlans, setAvailablePlans] = useState([]);
   const [availableFeatures, setAvailableFeatures] = useState([]);
   const [results, setResults] = useState({
@@ -230,6 +272,15 @@ export default function TheCalculator() {
     costBRL: 0,
     recommendUpgrade: false,
   });
+
+  // Hook para mobile
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Efeito para atualizar planos e features quando a ferramenta muda
   useEffect(() => {
@@ -315,7 +366,7 @@ export default function TheCalculator() {
   return (
     <div
       style={{
-        padding: "20px",
+        padding: isMobile ? "10px" : "20px",
         maxWidth: "800px",
         margin: "0 auto",
         backgroundColor: "black",
@@ -328,8 +379,9 @@ export default function TheCalculator() {
       <h1
         style={{
           textAlign: "center",
-          marginBottom: "30px",
-          transform: "translateX(-30%)",
+          marginBottom: isMobile ? "20px" : "30px",
+          transform: isMobile ? "none" : "translateX(-30%)",
+          fontSize: isMobile ? "24px" : "32px",
         }}
       >
         THE CALCULATOR
@@ -339,45 +391,64 @@ export default function TheCalculator() {
         src="/the-future-academy-logo-calculator.png" // Atualize com o caminho correto do seu logo
         alt="Logo da Empresa"
         style={{
-          height: "80px", // Ajuste conforme necessário
+          marginTop: isMobile ? "10px" : "0", // Adicionar esta linha
+          height: isMobile ? "40px" : "80px", // Ajuste conforme necessário
           width: "auto",
-          position: "absolute", // Posicionamento absoluto
-          top: "25px", // Ajuste conforme necessário
-          right: "20px", // Ajuste conforme necessário
-          transform: "translateX(-440%)", // Centraliza verticalmente
+          position: isMobile ? "static" : "absolute", // Posicionamento absoluto
+          top: isMobile ? "auto" : "25px", // Ajuste conforme necessário
+          right: isMobile ? "auto" : "20px", // Ajuste conforme necessário
+          transform: isMobile ? "none" : "translateX(-440%)", // Centraliza verticalmente
+          marginBottom: isMobile ? "20px" : "0",
         }}
       />
 
       <div
-        style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}
+        style={{
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+          gap: isMobile ? "15px" : "20px",
+        }}
       >
         {/* Formulário */}
         <div
           style={{
-            padding: "20px",
+            padding: isMobile ? "15px" : "20px",
             backgroundColor: "#1c1c1e", // Cor escura estilo Apple
-            borderRadius: "12px",
+            borderRadius: isMobile ? "8px" : "12px",
             border: "1px solid #2c2c2e",
           }}
         >
           {/* Tool Select */}
           <div style={{ marginBottom: "15px" }}>
-            <label style={{ display: "block", marginBottom: "5px" }}>
+            <label
+              style={{
+                display: "block",
+                marginBottom: isMobile ? "4px" : "5px",
+                color: "#fff",
+                fontSize: isMobile ? "14px" : "15px",
+                fontWeight: "500",
+              }}
+            >
               Ferramenta
             </label>
             <select
+              className="input-field"
               value={selectedTool}
               onChange={(e) => setSelectedTool(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "8px",
-                borderRadius: "4px",
-                border: "1px solid #ddd",
-              }}
+              style={{ backgroundColor: "#2c2c2e", color: "white" }}
             >
-              <option value="">Selecione a ferramenta</option>
+              <option
+                value=""
+                style={{ backgroundColor: "#1c1c1e", color: "white" }}
+              >
+                Selecione a ferramenta
+              </option>
               {Object.keys(TOOLS_DATA).map((tool) => (
-                <option key={tool} value={tool}>
+                <option
+                  key={tool}
+                  value={tool}
+                  style={{ backgroundColor: "#1c1c1e", color: "white" }}
+                >
                   {tool}
                 </option>
               ))}
@@ -386,22 +457,35 @@ export default function TheCalculator() {
 
           {/* Plan Select */}
           <div style={{ marginBottom: "15px" }}>
-            <label style={{ display: "block", marginBottom: "5px" }}>
+            <label
+              style={{
+                display: "block",
+                marginBottom: isMobile ? "4px" : "5px",
+                color: "#fff",
+                fontSize: isMobile ? "14px" : "15px",
+                fontWeight: "500",
+              }}
+            >
               Plano
             </label>
             <select
+              className="input-field"
               value={selectedPlan}
               onChange={(e) => setSelectedPlan(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "8px",
-                borderRadius: "4px",
-                border: "1px solid #ddd",
-              }}
+              style={{ backgroundColor: "#2c2c2e", color: "white" }}
             >
-              <option value="">Selecione o plano</option>
+              <option
+                value=""
+                style={{ backgroundColor: "#1c1c1e", color: "white" }}
+              >
+                Selecione o plano
+              </option>
               {availablePlans.map((plan) => (
-                <option key={plan.name} value={plan.name}>
+                <option
+                  key={plan.name}
+                  value={plan.name}
+                  style={{ backgroundColor: "#1c1c1e", color: "white" }}
+                >
                   {plan.name}
                 </option>
               ))}
@@ -410,22 +494,35 @@ export default function TheCalculator() {
 
           {/* Feature Select */}
           <div style={{ marginBottom: "15px" }}>
-            <label style={{ display: "block", marginBottom: "5px" }}>
+            <label
+              style={{
+                display: "block",
+                marginBottom: isMobile ? "4px" : "5px",
+                color: "#fff",
+                fontSize: isMobile ? "14px" : "15px",
+                fontWeight: "500",
+              }}
+            >
               Funcionalidade
             </label>
             <select
+              className="input-field"
               value={selectedFeature}
               onChange={(e) => setSelectedFeature(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "8px",
-                borderRadius: "4px",
-                border: "1px solid #ddd",
-              }}
+              style={{ backgroundColor: "#2c2c2e", color: "white" }}
             >
-              <option value="">Selecione a funcionalidade</option>
+              <option
+                value=""
+                style={{ backgroundColor: "#1c1c1e", color: "white" }}
+              >
+                Selecione a funcionalidade
+              </option>
               {availableFeatures.map((feature) => (
-                <option key={feature.name} value={feature.name}>
+                <option
+                  key={feature.name}
+                  value={feature.name}
+                  style={{ backgroundColor: "#1c1c1e", color: "white" }}
+                >
                   {feature.name}
                 </option>
               ))}
@@ -437,9 +534,9 @@ export default function TheCalculator() {
             <label
               style={{
                 display: "block",
-                marginBottom: "5px",
+                marginBottom: isMobile ? "4px" : "5px",
                 color: "#fff",
-                fontSize: "15px",
+                fontSize: isMobile ? "14px" : "15px",
                 fontWeight: "500",
               }}
             >
@@ -466,9 +563,11 @@ export default function TheCalculator() {
               }}
               style={{
                 width: "100%",
-                padding: "8px",
+                padding: isMobile ? "12px" : "8px",
                 borderRadius: "4px",
                 border: "1px solid #ddd",
+                fontSize: isMobile ? "16px" : "14px", // Fonte maior para mobile
+                height: isMobile ? "44px" : "40px", // Altura maior para touch
               }}
               placeholder="Digite a quantidade"
             />
@@ -479,9 +578,9 @@ export default function TheCalculator() {
             <label
               style={{
                 display: "block",
-                marginBottom: "5px",
+                marginBottom: isMobile ? "4px" : "5px",
                 color: "#fff",
-                fontSize: "15px",
+                fontSize: isMobile ? "14px" : "15px",
                 fontWeight: "500",
               }}
             >
@@ -498,9 +597,11 @@ export default function TheCalculator() {
               step="0.01"
               style={{
                 width: "100%",
-                padding: "8px",
+                padding: isMobile ? "12px" : "8px",
                 borderRadius: "4px",
                 border: "1px solid #ddd",
+                fontSize: isMobile ? "16px" : "14px", // Fonte maior para mobile
+                height: isMobile ? "44px" : "40px", // Altura maior para touch
               }}
             />
           </div>
@@ -515,14 +616,22 @@ export default function TheCalculator() {
             border: "1px solid #2c2c2e",
           }}
         >
-          <h2 style={{ marginBottom: "20px" }}>Resultados</h2>
+          <h2
+            style={{
+              marginBottom: isMobile ? "15px" : "20px",
+              color: "white",
+              fontSize: isMobile ? "14px" : "16px",
+            }}
+          >
+            Resultados
+          </h2>
 
           <div
             style={{
-              padding: "15px",
+              padding: isMobile ? "12px" : "15px",
               backgroundColor: "white",
-              borderRadius: "4px",
-              marginBottom: "15px",
+              borderRadius: isMobile ? "6px" : "4px",
+              marginBottom: isMobile ? "12px" : "15px",
             }}
           >
             <div
@@ -550,10 +659,10 @@ export default function TheCalculator() {
 
           <div
             style={{
-              padding: "15px",
+              padding: isMobile ? "12px" : "15px",
               backgroundColor: "white",
-              borderRadius: "4px",
-              marginBottom: "15px",
+              borderRadius: isMobile ? "6px" : "4px",
+              marginBottom: isMobile ? "12px" : "15px",
               border: "2px solid rgb(231, 54, 158)",
             }}
           >
@@ -583,9 +692,10 @@ export default function TheCalculator() {
           {results.recommendUpgrade && (
             <div
               style={{
-                padding: "15px",
+                padding: isMobile ? "12px" : "15px",
                 backgroundColor: "white",
-                borderRadius: "4px",
+                borderRadius: isMobile ? "6px" : "4px",
+                marginBottom: isMobile ? "12px" : "15px",
                 color: "black",
               }}
             >
@@ -605,28 +715,42 @@ export default function TheCalculator() {
       {selectedTool && (
         <div
           style={{
-            marginTop: "40px",
+            marginTop: isMobile ? "20px" : "40px",
             backgroundColor: "#1c1c1e",
-            borderRadius: "12px",
-            padding: "20px",
+            borderRadius: isMobile ? "8px" : "12px",
+            padding: isMobile ? "15px" : "20px",
             border: "1px solid #2c2c2e",
+            overflowX: isMobile ? "auto" : "visible",
           }}
         >
           <h2
-            style={{ marginBottom: "20px", color: "white", fontSize: "16px" }}
+            style={{
+              marginBottom: isMobile ? "15px" : "20px",
+              color: "white",
+              fontSize: isMobile ? "14px" : "16px",
+              fontWeight: "500",
+            }}
           >
             Tabela de Planos - {selectedTool}
           </h2>
 
           {/* Tabela de Planos */}
-          <div style={{ overflowX: "auto" }}>
+          <div
+            style={{
+              overflowX: "auto",
+              WebkitOverflowScrolling: "touch",
+              margin: isMobile ? "-15px" : "0",
+              padding: isMobile ? "15px" : "0",
+            }}
+          >
             <table
               style={{
                 width: "100%",
                 borderCollapse: "collapse",
                 backgroundColor: "white",
                 borderRadius: "4px",
-                fontSize: "13px",
+                minWidth: isMobile ? "500px" : "auto", // Força scroll horizontal
+                fontSize: isMobile ? "12px" : "13px",
               }}
             >
               <thead>
@@ -738,24 +862,33 @@ export default function TheCalculator() {
           </div>
 
           {/* Tabela de Funcionalidades */}
-          <h2
+         <h2
             style={{
-              marginTop: "30px",
-              marginBottom: "20px",
+              marginTop: isMobile ? "20px" : "30px",
+              marginBottom: isMobile ? "15px" : "20px",
               color: "white",
-              fontSize: "16px",
+              fontSize: isMobile ? "14px" : "16px",
+              fontWeight: "500",
             }}
           >
             Funcionalidades e Consumo
           </h2>
-          <div style={{ overflowX: "auto" }}>
+          <div
+            style={{
+              overflowX: "auto",
+              WebkitOverflowScrolling: "touch",
+              margin: isMobile ? "-15px" : "0",
+              padding: isMobile ? "15px" : "0",
+            }}
+          >
             <table
               style={{
                 width: "100%",
                 borderCollapse: "collapse",
                 backgroundColor: "white",
                 borderRadius: "4px",
-                fontSize: "13px",
+                minWidth: isMobile ? "500px" : "auto", // Força scroll horizontal
+                fontSize: isMobile ? "12px" : "13px",
               }}
             >
               <thead>
@@ -824,9 +957,10 @@ export default function TheCalculator() {
             <div style={{ marginTop: "30px" }}>
               <h2
                 style={{
-                  marginBottom: "20px",
+                  marginBottom: isMobile ? "15px" : "20px",
                   color: "white",
-                  fontSize: "16px",
+                  fontSize: isMobile ? "14px" : "16px",
+                  fontWeight: "500",
                 }}
               >
                 Créditos Extras
