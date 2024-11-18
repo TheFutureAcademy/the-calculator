@@ -392,7 +392,7 @@ export default function TheCalculator() {
         alt="Logo da Empresa"
         style={{
           marginTop: isMobile ? "10px" : "0", // Adicionar esta linha
-          height: isMobile ? "40px" : "80px", // Ajuste conforme necessário
+          height: isMobile ? "60px" : "80px", // Ajuste conforme necessário
           width: "auto",
           position: isMobile ? "static" : "absolute", // Posicionamento absoluto
           top: isMobile ? "auto" : "25px", // Ajuste conforme necessário
