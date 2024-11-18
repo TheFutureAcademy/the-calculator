@@ -230,18 +230,19 @@ const TOOLS_DATA = {
       { name: "Plano Premier", credits: 2430, price: 499.99 },
     ],
     features: [{ name: "Luma - vídeo 5s", creditsPerGen: 1 }],
-    extraCredits: { amount: 70, price: 9.99 },
+    extraCredits: { amount: 70, price: 9,99 },
   },
   "Eleven Labs": {
-    { name: "Plano Grátis", credits: 10000, price: 0 },
+    plans: [
+      { name: "Plano Grátis", credits: 10000, price: 0 },
       { name: "Plano Starter", credits: 30000, price: 5 },
       { name: "Plano Creator", credits: 10000, price: 22 },
       { name: "Plano Pro", credits: 500000, price: 99 },
       { name: "Plano Scale", credits: 2000000, price: 330 },
       { name: "Plano Business", credits: 11000000, price: 1320 },
     ],
-    features: [{ name: "Texto para Voz (1min)", creditsPerGen: 1000 }],
-    extraCredits: { amount: 50, price: 10 },
+    features: [{ name: “Geração de 1min de áudio", creditsPerGen: 1000 }],
+    extraCredits: { amount: 1000, price: 0.3 },
   },
   Suno: {
     plans: [
