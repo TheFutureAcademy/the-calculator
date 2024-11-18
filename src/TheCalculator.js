@@ -720,7 +720,6 @@ export default function TheCalculator() {
             borderRadius: isMobile ? "8px" : "12px",
             padding: isMobile ? "15px" : "20px",
             border: "1px solid #2c2c2e",
-            overflowX: isMobile ? "auto" : "visible",
             width: isMobile ? "100%" : undefined, // Ocupa toda largura em mobile
             boxSizing: "border-box"
           }}
