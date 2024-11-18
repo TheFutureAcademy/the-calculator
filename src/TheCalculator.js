@@ -230,7 +230,7 @@ const TOOLS_DATA = {
       { name: "Plano Premier", credits: 2430, price: 499.99 },
     ],
     features: [{ name: "Luma - vídeo 5s", creditsPerGen: 1 }],
-    extraCredits: { amount: 70, price: 9,99 },
+    extraCredits: { amount: 70, price: 9.99 },
   },
   "Eleven Labs": {
     plans: [
@@ -598,7 +598,6 @@ export default function TheCalculator() {
               onChange={(e) =>
                 setExchangeRate(formatNumber(Number(e.target.value)))
               }
-              step="0.01"
               style={{
                 width: "100%",
                 padding: isMobile ? "12px" : "8px",
