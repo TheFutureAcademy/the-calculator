@@ -606,39 +606,6 @@ export default function TheCalculator() {
                 height: isMobile ? "44px" : "40px", // Altura maior para touch              
               }}
             />
-              <div style={{ 
-      display: "flex", 
-      flexDirection: "column",
-      marginLeft: "-30px",
-      zIndex: 1 
-    }}>
-      <button
-        onClick={() => setExchangeRate(formatNumber(Number(exchangeRate.replace(",", ".")) + 0.01))}
-        style={{
-          border: "none",
-          background: "none",
-          color: "white",
-          cursor: "pointer",
-          padding: "2px",
-          fontSize: "12px"
-        }}
-      >
-        ▲
-      </button>
-      <button
-        onClick={() => setExchangeRate(formatNumber(Math.max(0, Number(exchangeRate.replace(",", ".")) - 0.01)))}
-        style={{
-          border: "none",
-          background: "none",
-          color: "white",
-          cursor: "pointer",
-          padding: "2px",
-          fontSize: "12px"
-        }}
-      >
-        ▼
-      </button>
-    </div>
           </div>
         </div>
 
