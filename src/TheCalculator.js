@@ -230,19 +230,46 @@ const TOOLS_DATA = {
       { name: "Plano Premier", credits: 2430, price: 499.99 },
     ],
     features: [{ name: "Luma - vídeo 5s", creditsPerGen: 1 }],
-    extraCredits: { amount: 50, price: 10 },
+    extraCredits: { amount: 70, price: 9.99 },
   },
   "Eleven Labs": {
     plans: [
       { name: "Plano Grátis", credits: 10000, price: 0 },
-      { name: "Plano Starter", credits: 30000, price: 5 },
-      { name: "Plano Creator", credits: 10000, price: 22 },
-      { name: "Plano Pro", credits: 500000, price: 99 },
-      { name: "Plano Scale", credits: 2000000, price: 330 },
-      { name: "Plano Business", credits: 11000000, price: 1320 },
+    	{
+        name: "Plano Starter”,
+        credits: 30000,
+        price: 5,
+      },
+      {
+        name: "Plano Creator”,
+        credits: 100000,
+        price: 22,
+        extraPrice: 0.30,
+        extraAmount: 1000,
+      },
+      {
+        name: "Plano Pro”,
+        credits: 500000,
+        price: 99,
+        extraPrice: 0.24,
+        extraAmount: 1000,
+    	},
+	    {
+        name: "Plano Scale”,
+        credits: 2000000,
+        price: 330,
+        extraPrice: 0.18,
+        extraAmount: 1000,
+    	},
+    	{
+        name: "Plano Business”,
+        credits: 11000000,
+        price: 1320,
+        extraPrice: 0.12,
+        extraAmount: 1000,
+    	},
     ],
-    features: [{ name: "Texto para Voz (1min)", creditsPerGen: 1000 }],
-    extraCredits: { amount: 50, price: 10 },
+    features: [{ name: “Geração de 1min de áudio", creditsPerGen: 1000 }],
   },
   Suno: {
     plans: [
@@ -251,7 +278,7 @@ const TOOLS_DATA = {
       { name: "Plano Premier", credits: 10000, price: 30 },
     ],
     features: [{ name: "Songs", creditsPerGen: 5 }],
-    extraCredits: { amount: 50, price: 10 },
+    extraCredits: { amount: 2500, price: 10 },
   },
 };
 
