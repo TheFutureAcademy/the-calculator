@@ -230,7 +230,7 @@ const TOOLS_DATA = {
       { name: "Plano Premier", credits: 2430, price: 499.99 },
     ],
     features: [{ name: "Luma - vídeo 5s", creditsPerGen: 1 }],
-    extraCredits: { amount: 70, price: 9.99 },
+    extraCredits: { amount: 50, price: 10 },
   },
   "Eleven Labs": {
     plans: [
@@ -241,8 +241,8 @@ const TOOLS_DATA = {
       { name: "Plano Scale", credits: 2000000, price: 330 },
       { name: "Plano Business", credits: 11000000, price: 1320 },
     ],
-    features: [{ name: “Geração de 1min de áudio", creditsPerGen: 1000 }],
-    extraCredits: { amount: 1000, price: 0.3 },
+    features: [{ name: "Texto para Voz (1min)", creditsPerGen: 1000 }],
+    extraCredits: { amount: 50, price: 10 },
   },
   Suno: {
     plans: [
@@ -251,7 +251,7 @@ const TOOLS_DATA = {
       { name: "Plano Premier", credits: 10000, price: 30 },
     ],
     features: [{ name: "Songs", creditsPerGen: 5 }],
-    extraCredits: { amount: 2500, price: 10 },
+    extraCredits: { amount: 50, price: 10 },
   },
 };
 
@@ -367,7 +367,7 @@ export default function TheCalculator() {
     <div
       style={{
         padding: isMobile ? "10px" : "20px",
-        maxWidth: isMobile ? "100%": "800px",
+        maxWidth: "800px",
         margin: "0 auto",
         backgroundColor: "black",
         minHeight: "100vh",
@@ -545,9 +545,7 @@ export default function TheCalculator() {
             <input
               className="input-field"
               type="number"
-              inputMode="decimal"
               min="0"
-              step="1"
               value={generations}
               onKeyDown={(e) => {
                 // Impede a digitação do sinal negativo
@@ -591,13 +589,12 @@ export default function TheCalculator() {
             <input
               className="input-field"
               type="number"
-              inputMode="decimal" // Isso ajuda a mostrar o teclado correto em mobile
               min="0"
-              step="0.01"
               value={exchangeRate.replace(",", ".")}
               onChange={(e) =>
                 setExchangeRate(formatNumber(Number(e.target.value)))
               }
+              step="0.01"
               style={{
                 width: "100%",
                 padding: isMobile ? "12px" : "8px",
@@ -865,7 +862,7 @@ export default function TheCalculator() {
           </div>
 
           {/* Tabela de Funcionalidades */}
-         <h2
+          <h2
             style={{
               marginTop: isMobile ? "20px" : "30px",
               marginBottom: isMobile ? "15px" : "20px",
