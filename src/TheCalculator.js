@@ -235,14 +235,41 @@ const TOOLS_DATA = {
   "Eleven Labs": {
     plans: [
       { name: "Plano Grátis", credits: 10000, price: 0 },
-      { name: "Plano Starter", credits: 30000, price: 5 },
-      { name: "Plano Creator", credits: 10000, price: 22 },
-      { name: "Plano Pro", credits: 500000, price: 99 },
-      { name: "Plano Scale", credits: 2000000, price: 330 },
-      { name: "Plano Business", credits: 11000000, price: 1320 },
+      {
+        name: "Plano Starter",
+        credits: 30000,
+        price: 5,
+      },
+      {
+        name: "Plano Creator",
+        credits: 100000,
+        price: 22,
+        extraPrice: 0.30,
+        extraAmount: 1000,
+      },
+      {
+        name: "Plano Pro",
+        credits: 500000,
+        price: 99,
+        extraPrice: 0.24,
+        extraAmount: 1000,
+      },
+      {
+        name: "Plano Scale",
+        credits: 2000000,
+        price: 330,
+        extraPrice: 0.18,
+        extraAmount: 1000,
+      },
+      {
+        name: "Plano Business",
+        credits: 11000000,
+        price: 1320,
+        extraPrice: 0.12,
+        extraAmount: 1000,
+      },
     ],
     features: [{ name: "Geração de 1min de audio", creditsPerGen: 1000 }],
-    extraCredits: { amount: 1000, price: 0.3 },
   },
   Suno: {
     plans: [
