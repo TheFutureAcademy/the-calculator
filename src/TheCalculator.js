@@ -367,7 +367,7 @@ export default function TheCalculator() {
     <div
       style={{
         padding: isMobile ? "10px" : "20px",
-        maxWidth: "800px",
+        maxWidth: isMobile ? "100%": "800px",
         margin: "0 auto",
         backgroundColor: "black",
         minHeight: "100vh",
@@ -720,8 +720,7 @@ export default function TheCalculator() {
             borderRadius: isMobile ? "8px" : "12px",
             padding: isMobile ? "15px" : "20px",
             border: "1px solid #2c2c2e",
-            width: isMobile ? "100%" : undefined, // Ocupa toda largura em mobile
-            boxSizing: "border-box"
+            overflowX: isMobile ? "auto" : "visible",
           }}
         >
           <h2
