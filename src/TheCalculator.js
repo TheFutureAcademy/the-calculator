@@ -547,6 +547,7 @@ export default function TheCalculator() {
               type="number"
               inputMode="decimal"
               min="0"
+              step="1"
               value={generations}
               onKeyDown={(e) => {
                 // Impede a digitação do sinal negativo
@@ -592,6 +593,7 @@ export default function TheCalculator() {
               type="number"
               inputMode="decimal" // Isso ajuda a mostrar o teclado correto em mobile
               min="0"
+              step="0.01"
               value={exchangeRate.replace(",", ".")}
               onChange={(e) =>
                 setExchangeRate(formatNumber(Number(e.target.value)))
