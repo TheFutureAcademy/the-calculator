@@ -241,8 +241,8 @@ const TOOLS_DATA = {
       { name: "Plano Scale", credits: 2000000, price: 330 },
       { name: "Plano Business", credits: 11000000, price: 1320 },
     ],
-    features: [{ name: "Texto para Voz (1min)", creditsPerGen: 1000 }],
-    extraCredits: { amount: 50, price: 10 },
+    features: [{ name: "Geração de 1min de audio", creditsPerGen: 1000 }],
+    extraCredits: { amount: 1000, price: 0.3 },
   },
   Suno: {
     plans: [
@@ -251,7 +251,7 @@ const TOOLS_DATA = {
       { name: "Plano Premier", credits: 10000, price: 30 },
     ],
     features: [{ name: "Songs", creditsPerGen: 5 }],
-    extraCredits: { amount: 50, price: 10 },
+    extraCredits: { amount: 2500, price: 10 },
   },
 };
 
