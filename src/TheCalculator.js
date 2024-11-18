@@ -545,6 +545,7 @@ export default function TheCalculator() {
             <input
               className="input-field"
               type="number"
+              inputMode="decimal"
               min="0"
               value={generations}
               onKeyDown={(e) => {
