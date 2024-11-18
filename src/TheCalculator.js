@@ -399,6 +399,10 @@ export default function TheCalculator() {
           right: isMobile ? "auto" : "20px", // Ajuste conforme necessário
           transform: isMobile ? "translateX(160%)" : "translateX(-440%)", // Centraliza verticalmente
           marginBottom: isMobile ? "15px" : "0",
+          "@media (min-width: 768px) and (max-width: 1440px)": {
+              right: "40px", // Ajusta posição para MacBook
+              top: "25px",
+              transform: "none"
         }}
       />
 
