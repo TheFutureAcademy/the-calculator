@@ -602,6 +602,8 @@ export default function TheCalculator() {
                 border: "1px solid #ddd",
                 fontSize: isMobile ? "16px" : "14px", // Fonte maior para mobile
                 height: isMobile ? "44px" : "40px", // Altura maior para touch
+                appearance: "none", // Remove arrows em Safari
+                '-moz-appearance': 'textfield' // Remove arrows em Firefox
               }}
             />
           </div>
