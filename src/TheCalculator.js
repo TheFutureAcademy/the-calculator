@@ -457,7 +457,7 @@ export default function TheCalculator() {
           position: isMobile ? "static" : "absolute", // Posicionamento absoluto
           top: isMobile ? "auto" : "25px", // Ajuste conforme necessário
           right: isMobile ? "auto" : "20px", // Ajuste conforme necessário
-          transform: isMobile ? "translateX(160%)" : "translateX(-300%)", // Centraliza verticalmente
+          transform: isMobile ? "translateX(160%)" : "translateX(-340%)", // Centraliza verticalmente
           marginBottom: isMobile ? "10px" : "0",
         }}
       />
