@@ -348,31 +348,34 @@ export default function TheCalculator() {
     let shouldUpgrade = false;
     let nextPlanName = "";
 
-    // Lógica especial para Eleven Labs
-    if (selectedTool === "Eleven Labs" && additionalCredits > 0) {
-      if (plan.name === "Plano Grátis" || plan.name === "Plano Starter") {
-        // Encontra o próximo plano
-        const currentPlanIndex = tool.plans.findIndex(p => p.name === plan.name);
-        const nextPlan = tool.plans[currentPlanIndex + 1];
-        
-        if (nextPlan) {
-          totalCostUSD = nextPlan.price;
-          shouldUpgrade = true;
-          nextPlanName = nextPlan.name;
-        }
-      } else if (plan.extraPrice) {
-        // Para outros planos, usa o sistema de créditos extras
-        const extraPurchases = Math.ceil(additionalCredits / plan.extraAmount);
-        totalCostUSD += extraPurchases * plan.extraPrice;
+    // Função auxiliar para verificar se é plano que precisa de upgrade automático
+    const needsAutoUpgrade = () => {
+      return (
+        (selectedTool === "Eleven Labs" && 
+         (plan.name === "Plano Grátis" || plan.name === "Plano Starter")) ||
+        (selectedTool === "Runway" && plan.name === "Plano Grátis")
+      );
+    };
+
+    // Lógica para planos com upgrade automático
+    if (additionalCredits > 0 && needsAutoUpgrade()) {
+      // Encontra o próximo plano
+      const currentPlanIndex = tool.plans.findIndex(p => p.name === plan.name);
+      const nextPlan = tool.plans[currentPlanIndex + 1];
+      
+      if (nextPlan) {
+        totalCostUSD = nextPlan.price;
+        shouldUpgrade = true;
+        nextPlanName = nextPlan.name;
       }
     }
-    // Se é plano ilimitado
-    if (plan.credits === 999999) {
+    // Lógica para planos ilimitados
+    else if (plan.credits === 999999) {
       totalCostUSD = plan.price;
     }
-    // Se precisa de créditos adicionais
+    // Lógica de créditos extras
     else if (additionalCredits > 0) {
-      // Caso especial: Kling AI
+      // Caso especial: Kling AI e Elevenlabs
       if (selectedTool === "Kling AI" || (selectedTool === "Eleven Labs" && plan.extraPrice)) {
         const extraPurchases = Math.ceil(additionalCredits / plan.extraAmount);
         totalCostUSD += extraPurchases * plan.extraPrice;
