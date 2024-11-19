@@ -47,7 +47,6 @@ const inputStyles = `
     font-size: 12px;
     min-height: 40px;
     box-sizing: border-box;
-    appearance: none;
   }
 
   select.input-field {
@@ -59,6 +58,34 @@ const inputStyles = `
     background-repeat: no-repeat;
     background-position: right 12px top 50%;
     background-size: 12px auto;
+  }
+
+  /* Estilize as setas do input number */
+  input[type="number"].input-field {
+    -moz-appearance: textfield; /* Firefox */
+  }
+
+  input[type="number"].input-field::-webkit-inner-spin-button,
+  input[type="number"].input-field::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #2c2c2e;
+    color: white;
+    opacity: 1;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    height: 50%;
+    width: 20px;
+    cursor: pointer;
+  }
+
+  input[type="number"].input-field::-webkit-inner-spin-button {
+    top: 0;
+  }
+
+  input[type="number"].input-field::-webkit-outer-spin-button {
+    bottom: 0;
   }
 
   select.input-field option {
@@ -76,6 +103,19 @@ const inputStyles = `
     select.input-field {
       padding-right: 35px;
       background-position: right 15px top 50%;
+    }
+
+    /* Mantém as setas visíveis no mobile */
+    input[type="number"].input-field {
+      -moz-appearance: textfield; /* Firefox */
+    }
+
+    input[type="number"].input-field::-webkit-inner-spin-button,
+    input[type="number"].input-field::-webkit-outer-spin-button {
+      -webkit-appearance: auto;
+      appearance: auto;
+      opacity: 1;
+      margin-left: 5px;
     }
   }
 `; // Note o ponto e vírgula aqui
