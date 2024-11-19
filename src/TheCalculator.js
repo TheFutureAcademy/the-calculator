@@ -354,7 +354,8 @@ export default function TheCalculator() {
          (plan.name === "Plano Grátis" || plan.name === "Plano Starter")) ||
         (selectedTool === "Runway" && plan.name === "Plano Grátis")||
         (selectedTool === "Kling AI" && plan.name === "Plano Grátis")||
-        (selectedTool === "Luma" && plan.name !== "Plano Premier") // Todos os planos do Luma exceto o último
+        (selectedTool === "Luma" && 
+          (plan.name === "Plano Grátis" || plan.name === "Plano Lite" || plan.name === "Plano Standard" || plan.name === "Plano Plus" || plan.name === "Plano Pro") // Todos os planos do Luma exceto o último
       );
       );
     };
@@ -377,8 +378,19 @@ export default function TheCalculator() {
     }
     // Lógica de créditos extras
     else if (additionalCredits > 0) {
+      // Adiciona Luma na mesma lógica de upgrade automático
+      if (selectedTool === "Luma" && plan.name !== "Plano Premier") {
+        const currentPlanIndex = tool.plans.findIndex(p => p.name === plan.name);
+        const nextPlan = tool.plans[currentPlanIndex + 1];
+        
+        if (nextPlan) {
+          totalCostUSD = nextPlan.price;
+          shouldUpgrade = true;
+          nextPlanName = nextPlan.name;
+        }
+      }
       // Caso especial: Kling AI e Elevenlabs
-      if (selectedTool === "Kling AI" || (selectedTool === "Eleven Labs" && plan.extraPrice)) {
+      else if (selectedTool === "Kling AI" || (selectedTool === "Eleven Labs" && plan.extraPrice)) {
         const extraPurchases = Math.ceil(additionalCredits / plan.extraAmount);
         totalCostUSD += extraPurchases * plan.extraPrice;
       }
