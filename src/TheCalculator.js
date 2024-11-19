@@ -383,7 +383,7 @@ export default function TheCalculator() {
         totalCostUSD += extraPurchases * plan.extraPrice;
       }
       // Caso normal: usa sistema de créditos extras
-      else if (tool.extraCredits && selectedTool !== "Luma") { // Excluir Luma da lógica de créditos extras
+      else if (tool.extraCredits) {
         const extraPurchases = Math.ceil(
           additionalCredits / tool.extraCredits.amount
         );
