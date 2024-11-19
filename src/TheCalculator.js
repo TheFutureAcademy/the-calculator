@@ -277,7 +277,6 @@ const TOOLS_DATA = {
       { name: "Plano Premier", credits: 10000, price: 30 },
     ],
     features: [{ name: "Songs", creditsPerGen: 5 }],
-    extraCredits: { amount: 2500, price: 10 },
   },
 };
 
@@ -357,7 +356,9 @@ export default function TheCalculator() {
         (selectedTool === "Luma" && 
          (plan.name === "Plano Grátis" || plan.name === "Plano Lite" || plan.name === "Plano Standard" || plan.name === "Plano Plus" || plan.name === "Pro")) ||
         (selectedTool === "Leonardo AI" && 
-         (plan.name === "Plano Grátis" || plan.name === "Plano Apprentice" || plan.name === "Plano Artisan"))
+         (plan.name === "Plano Grátis" || plan.name === "Plano Apprentice" || plan.name === "Plano Artisan")) ||
+        (selectedTool === "Suno" && 
+         (plan.name === "Plano Grátis" || plan.name === "Plano Pro"))
       );
     };
 
