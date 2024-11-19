@@ -355,7 +355,9 @@ export default function TheCalculator() {
         (selectedTool === "Runway" && plan.name === "Plano Grátis") ||
         (selectedTool === "Kling AI" && plan.name === "Plano Grátis") ||
         (selectedTool === "Luma" && 
-         (plan.name === "Plano Grátis" || plan.name === "Plano Lite" || plan.name === "Plano Standard" || plan.name === "Plano Plus" || plan.name === "Pro"))
+         (plan.name === "Plano Grátis" || plan.name === "Plano Lite" || plan.name === "Plano Standard" || plan.name === "Plano Plus" || plan.name === "Pro")) ||
+        (selectedTool === "Leonardo AI" && 
+         (plan.name === "Plano Grátis" || plan.name === "Plano Apprentice" || plan.name === "Plano Artisan"))
       );
     };
 
