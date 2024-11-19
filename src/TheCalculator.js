@@ -353,7 +353,8 @@ export default function TheCalculator() {
       return (
         (selectedTool === "Eleven Labs" && 
          (plan.name === "Plano Grátis" || plan.name === "Plano Starter")) ||
-        (selectedTool === "Runway" && plan.name === "Plano Grátis")
+        (selectedTool === "Runway" && plan.name === "Plano Grátis")||
+        (selectedTool === "Kling AI" && plan.name === "Plano Grátis")
       );
     };
 
