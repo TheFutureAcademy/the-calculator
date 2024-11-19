@@ -60,34 +60,6 @@ const inputStyles = `
     background-size: 12px auto;
   }
 
-  /* Estilize as setas do input number */
-  input[type="number"].input-field {
-    -moz-appearance: textfield; /* Firefox */
-  }
-
-  input[type="number"].input-field::-webkit-inner-spin-button,
-  input[type="number"].input-field::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    appearance: none;
-    background: #2c2c2e;
-    color: white;
-    opacity: 1;
-    margin: 0;
-    position: absolute;
-    right: 0;
-    height: 50%;
-    width: 20px;
-    cursor: pointer;
-  }
-
-  input[type="number"].input-field::-webkit-inner-spin-button {
-    top: 0;
-  }
-
-  input[type="number"].input-field::-webkit-outer-spin-button {
-    bottom: 0;
-  }
-
   select.input-field option {
     background-color: #1c1c1e;
     color: white;
