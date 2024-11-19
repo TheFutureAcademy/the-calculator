@@ -76,19 +76,6 @@ const inputStyles = `
       padding-right: 35px;
       background-position: right 15px top 50%;
     }
-
-    /* Mantém as setas visíveis no mobile */
-    input[type="number"].input-field {
-      -moz-appearance: textfield; /* Firefox */
-    }
-
-    input[type="number"].input-field::-webkit-inner-spin-button,
-    input[type="number"].input-field::-webkit-outer-spin-button {
-      -webkit-appearance: auto;
-      appearance: auto;
-      opacity: 1;
-      margin-left: 5px;
-    }
   }
 `; // Note o ponto e vírgula aqui
 
