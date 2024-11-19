@@ -229,7 +229,7 @@ const TOOLS_DATA = {
       { name: "Plano Pro", credits: 480, price: 99.99 },
       { name: "Plano Premier", credits: 2430, price: 499.99 },
     ],
-    features: [{ name: "Luma - vídeo 5s", creditsPerGen: 1 }]
+    features: [{ name: "Luma - vídeo 5s", creditsPerGen: 1 }],
     extraCredits: { amount: 70, price: 9.99 },
   },
   "Eleven Labs": {
@@ -345,36 +345,12 @@ export default function TheCalculator() {
 
     // Inicializa custo com o preço do plano
     let totalCostUSD = plan.price;
-    let shouldUpgrade = false;
-    let nextPlanName = "";
 
-    // Função auxiliar para verificar se é plano que precisa de upgrade automático
-    const needsAutoUpgrade = () => {
-      return (
-        (selectedTool === "Eleven Labs" && 
-         (plan.name === "Plano Grátis" || plan.name === "Plano Starter")) ||
-        (selectedTool === "Runway" && plan.name === "Plano Grátis")||
-        (selectedTool === "Kling AI" && plan.name === "Plano Grátis")
-      );
-    };
-
-    // Lógica para planos com upgrade automático
-    if (additionalCredits > 0 && needsAutoUpgrade()) {
-      // Encontra o próximo plano
-      const currentPlanIndex = tool.plans.findIndex(p => p.name === plan.name);
-      const nextPlan = tool.plans[currentPlanIndex + 1];
-      
-      if (nextPlan) {
-        totalCostUSD = nextPlan.price;
-        shouldUpgrade = true;
-        nextPlanName = nextPlan.name;
-      }
-    }
-    // Lógica para planos ilimitados
-    else if (plan.credits === 999999) {
+    // Se é plano ilimitado
+    if (plan.credits === 999999) {
       totalCostUSD = plan.price;
     }
-    // Lógica de créditos extras
+    // Lógica de créditos adicionais
     else if (additionalCredits > 0) {
       // Caso especial: Kling AI e Elevenlabs
       if (selectedTool === "Kling AI" || (selectedTool === "Eleven Labs" && plan.extraPrice)) {
@@ -402,16 +378,11 @@ export default function TheCalculator() {
 
     setResults({
       creditsNeeded,
-      additionalCredits: shouldUpgrade ? 0 : additionalCredits, // Reset additionalCredits se houver upgrade
+      additionalCredits,
       costUSD: totalCostUSD,
       costBRL: totalCostBRL,
       recommendUpgrade,
     });
-
-    // Se precisar fazer upgrade automático, atualiza o plano selecionado
-    if (shouldUpgrade) {
-      setSelectedPlan(nextPlanName);
-    }
   };
 
   // Efeito para recalcular quando inputs mudam
