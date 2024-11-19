@@ -354,7 +354,9 @@ export default function TheCalculator() {
         (selectedTool === "Eleven Labs" && 
          (plan.name === "Plano Grátis" || plan.name === "Plano Starter")) ||
         (selectedTool === "Runway" && plan.name === "Plano Grátis")||
-        (selectedTool === "Kling AI" && plan.name === "Plano Grátis")
+        (selectedTool === "Kling AI" && plan.name === "Plano Grátis")||
+        (selectedTool === "Luma" && plan.name !== "Plano Premier") // Todos os planos do Luma exceto o último
+      );
       );
     };
 
@@ -382,7 +384,7 @@ export default function TheCalculator() {
         totalCostUSD += extraPurchases * plan.extraPrice;
       }
       // Caso normal: usa sistema de créditos extras
-      else if (tool.extraCredits) {
+      else if (tool.extraCredits && selectedTool !== "Luma") { // Excluir Luma da lógica de créditos extras
         const extraPurchases = Math.ceil(
           additionalCredits / tool.extraCredits.amount
         );
