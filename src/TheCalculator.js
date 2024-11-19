@@ -345,7 +345,27 @@ export default function TheCalculator() {
 
     // Inicializa custo com o preço do plano
     let totalCostUSD = plan.price;
+    let shouldUpgrade = false;
+    let nextPlanName = "";
 
+    // Lógica especial para Eleven Labs
+    if (selectedTool === "Eleven Labs" && additionalCredits > 0) {
+      if (plan.name === "Plano Grátis" || plan.name === "Plano Starter") {
+        // Encontra o próximo plano
+        const currentPlanIndex = tool.plans.findIndex(p => p.name === plan.name);
+        const nextPlan = tool.plans[currentPlanIndex + 1];
+        
+        if (nextPlan) {
+          totalCostUSD = nextPlan.price;
+          shouldUpgrade = true;
+          nextPlanName = nextPlan.name;
+        }
+      } else if (plan.extraPrice) {
+        // Para outros planos, usa o sistema de créditos extras
+        const extraPurchases = Math.ceil(additionalCredits / plan.extraAmount);
+        totalCostUSD += extraPurchases * plan.extraPrice;
+      }
+    }
     // Se é plano ilimitado
     if (plan.credits === 999999) {
       totalCostUSD = plan.price;
@@ -378,11 +398,16 @@ export default function TheCalculator() {
 
     setResults({
       creditsNeeded,
-      additionalCredits,
+      additionalCredits: shouldUpgrade ? 0 : additionalCredits, // Reset additionalCredits se houver upgrade
       costUSD: totalCostUSD,
       costBRL: totalCostBRL,
       recommendUpgrade,
     });
+
+    // Se precisar fazer upgrade automático, atualiza o plano selecionado
+    if (shouldUpgrade) {
+      setSelectedPlan(nextPlanName);
+    }
   };
 
   // Efeito para recalcular quando inputs mudam
