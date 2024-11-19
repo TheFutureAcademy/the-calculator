@@ -230,6 +230,7 @@ const TOOLS_DATA = {
       { name: "Plano Premier", credits: 2430, price: 499.99 },
     ],
     features: [{ name: "Luma - vídeo 5s", creditsPerGen: 1 }]
+    extraCredits: { amount: 70, price: 9.99 },
   },
   "Eleven Labs": {
     plans: [
@@ -353,10 +354,7 @@ export default function TheCalculator() {
         (selectedTool === "Eleven Labs" && 
          (plan.name === "Plano Grátis" || plan.name === "Plano Starter")) ||
         (selectedTool === "Runway" && plan.name === "Plano Grátis")||
-        (selectedTool === "Kling AI" && plan.name === "Plano Grátis")||
-        (selectedTool === "Luma" && 
-          (plan.name === "Plano Grátis" || plan.name === "Plano Lite" || plan.name === "Plano Standard" || plan.name === "Plano Plus" || plan.name === "Plano Pro") // Todos os planos do Luma exceto o último
-      );
+        (selectedTool === "Kling AI" && plan.name === "Plano Grátis")
       );
     };
 
@@ -378,19 +376,8 @@ export default function TheCalculator() {
     }
     // Lógica de créditos extras
     else if (additionalCredits > 0) {
-      // Adiciona Luma na mesma lógica de upgrade automático
-      if (selectedTool === "Luma" && plan.name !== "Plano Premier") {
-        const currentPlanIndex = tool.plans.findIndex(p => p.name === plan.name);
-        const nextPlan = tool.plans[currentPlanIndex + 1];
-        
-        if (nextPlan) {
-          totalCostUSD = nextPlan.price;
-          shouldUpgrade = true;
-          nextPlanName = nextPlan.name;
-        }
-      }
       // Caso especial: Kling AI e Elevenlabs
-      else if (selectedTool === "Kling AI" || (selectedTool === "Eleven Labs" && plan.extraPrice)) {
+      if (selectedTool === "Kling AI" || (selectedTool === "Eleven Labs" && plan.extraPrice)) {
         const extraPurchases = Math.ceil(additionalCredits / plan.extraAmount);
         totalCostUSD += extraPurchases * plan.extraPrice;
       }
