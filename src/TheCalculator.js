@@ -352,8 +352,10 @@ export default function TheCalculator() {
       return (
         (selectedTool === "Eleven Labs" && 
          (plan.name === "Plano Grátis" || plan.name === "Plano Starter")) ||
-        (selectedTool === "Runway" && plan.name === "Plano Grátis")||
-        (selectedTool === "Kling AI" && plan.name === "Plano Grátis")
+        (selectedTool === "Runway" && plan.name === "Plano Grátis") ||
+        (selectedTool === "Kling AI" && plan.name === "Plano Grátis") ||
+        (selectedTool === "Luma" && 
+         (plan.name === "Plano Grátis" || plan.name === "Plano Lite" || plan.name === "Plano Standard" || plan.name === "Plano Plus" || plan.name === "Pro"))
       );
     };
 
