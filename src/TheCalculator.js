@@ -229,7 +229,7 @@ const TOOLS_DATA = {
       { name: "Plano Pro", credits: 480, price: 99.99 },
       { name: "Plano Premier", credits: 2430, price: 499.99 },
     ],
-    features: [{ name: "Luma - vídeo 5s", creditsPerGen: 1 }],
+    features: [{ name: "Luma - vídeo 5s", creditsPerGen: 1 }]
   },
   "Eleven Labs": {
     plans: [
