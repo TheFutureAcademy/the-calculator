@@ -353,7 +353,7 @@ export default function TheCalculator() {
     // Se precisa de créditos adicionais
     else if (additionalCredits > 0) {
       // Caso especial: Kling AI
-      if (selectedTool === "Kling AI") {
+      if (selectedTool === "Kling AI" || (selectedTool === "Eleven Labs" && plan.extraPrice)) {
         const extraPurchases = Math.ceil(additionalCredits / plan.extraAmount);
         totalCostUSD += extraPurchases * plan.extraPrice;
       }
