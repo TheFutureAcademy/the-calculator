@@ -209,6 +209,8 @@ const TOOLS_DATA = {
       { name: "Kling 1.0 - vídeo 10s", creditsPerGen: 20 },
       { name: "Kling 1.5 - vídeo 5s", creditsPerGen: 35 },
       { name: "Kling 1.5 - vídeo 10s", creditsPerGen: 70 },
+      { name: "Kling 2.0 - vídeo 5s", creditsPerGen: 100 },
+      { name: "Kling 2.0 - vídeo 10s", creditsPerGen: 200 },
     ],
   },
   Minimax: {
