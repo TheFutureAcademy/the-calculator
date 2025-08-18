@@ -93,6 +93,7 @@ const TOOLS_DATA = {
       { name: "Mega", credits: 3600, price: 120 },
     ],
     features: [{ name: "Geração de Imagem", creditsPerGen: 1 }],
+    license: "Inclui lincença comercial nos planos pagos.",
     extraCredits: { amount: 60, price: 4 },
   },
   "Flux AI": {
@@ -1055,6 +1056,33 @@ export default function TheCalculator() {
                     selecionado
                   </p>
                 )}
+              </div>
+            </div>
+          )}
+
+            {/* Informações de Licença Comercial */}
+          {TOOLS_DATA[selectedTool].license && (
+            <div style={{ marginTop: "30px" }}>
+              <h2
+                style={{
+                  marginBottom: isMobile ? "15px" : "20px",
+                  color: "white",
+                  fontSize: isMobile ? "14px" : "16px",
+                  fontWeight: "500",
+                }}
+              >
+                Licença Comercial
+              </h2>
+              <div
+                style={{
+                  padding: "12px",
+                  backgroundColor: "white",
+                  borderRadius: "4px",
+                }}
+              >
+                <p style={{ color: "black", fontSize: "13px" }}>
+                  {TOOLS_DATA[selectedTool].license}
+                </p>
               </div>
             </div>
           )}
