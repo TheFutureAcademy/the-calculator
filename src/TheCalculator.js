@@ -93,7 +93,7 @@ const TOOLS_DATA = {
       { name: "Mega", credits: 3600, price: 120 },
     ],
     features: [{ name: "Geração de Imagem", creditsPerGen: 1 }],
-    license: "Inclui lincença comercial nos planos pagos.",
+    license: "Inclui lincença comercial nos planos pagos. Se você for assinante, está livre para usar suas imagens/vídeos da maneira que quiser. No entanto, é obrigatório adquirir o plano Pro ou Mega se sua empresa tiver uma receita bruta anual superior a US$ 1.000.000.",
     extraCredits: { amount: 60, price: 4 },
   },
   "Flux AI": {
