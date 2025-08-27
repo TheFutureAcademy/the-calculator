@@ -192,6 +192,7 @@ const TOOLS_DATA = {
       { name: "Soul Jump", creditsPerGen: 875 },
       { name: "Face Punch", creditsPerGen: 875 },
     ],
+    license: "Inclui lincença comercial nos planos pagos.",
     extraCredits: { amount: 4000, price: 9.99 },
   },
   "Leonardo AI": {
