@@ -96,6 +96,26 @@ const TOOLS_DATA = {
     license: "Inclui lincença comercial nos planos pagos. Se você for assinante, está livre para usar suas imagens/vídeos da maneira que quiser. No entanto, é obrigatório adquirir o plano Pro ou Mega se sua empresa tiver uma receita bruta anual superior a US$ 1.000.000. Fonte: www.midjourney.com",
     extraCredits: { amount: 60, price: 4 },
   },
+   "Higgsfield": {
+    plans: [
+      { name: "Plano Grátis", credits: 50, price: 0 },
+      { name: "Plano Básico", credits: 150, price: 9 },
+      { name: "Plano Pro", credits: 600, price: 29 },
+      { name: "Plano Ultimate", credits: 1200, price: 49 },
+      { name: "Plano Creator", credits: 60000, price: 249 },
+    ],
+    features: [
+      { name: "Image - Higgsfield Soul", creditsPerGen: 2 },
+      { name: "Image - Higgsfield Soul", creditsPerGen: 2 },
+      { name: "Image - Higgsfield Soul", creditsPerGen: 2 },
+      { name: "Image - Higgsfield Soul", creditsPerGen: 2 },
+      { name: "Image - Higgsfield Soul", creditsPerGen: 2 },
+      { name: "Image - Higgsfield Soul", creditsPerGen: 2 },
+      { name: "Image - Higgsfield Soul", creditsPerGen: 2 },
+      { name: "Image - Higgsfield Soul", creditsPerGen: 2 },
+      { name: "Image - Higgsfield Soul", creditsPerGen: 2 },
+    ],
+  },
   "Flux AI": {
     plans: [
       { name: "Plano Grátis", credits: 40, price: 0 },
