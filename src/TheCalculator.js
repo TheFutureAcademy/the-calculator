@@ -266,7 +266,7 @@ const TOOLS_DATA = {
       { name: "Plano Standard", credits: 625, price: 15 },
       { name: "Plano Pro", credits: 2250, price: 35 },
       { name: "Plano Unlimited", credits: 999999, price: 95 },
-      { name: "Plano Enterprise", credits: 999999, price: 2.000 },
+      { name: "Plano Enterprise", credits: 999999, price: 2000 },
     ],
     features: [
       { name: "Geração de 1s Gen-4 Aleph", creditsPerGen: 15 },
