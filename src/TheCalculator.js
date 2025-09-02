@@ -278,7 +278,7 @@ const TOOLS_DATA = {
       { name: "Geração de 1 imagem Gen-4 720p", creditsPerGen: 5 },
       { name: "Geração Turbo de 1 imagem Gen-4", creditsPerGen: 2 },
       { name: "Geração de 1 imagem Flash 2.5", creditsPerGen: 5 },
-      { name: "Geração de 1s Upscale pata 4k", creditsPerGen: 2 },
+      { name: "Geração de 1s Upscale para 4k", creditsPerGen: 2 },
       { name: "Geração de 1s Gen-3 Alpha", creditsPerGen: 10 },
       { name: "Geração de 1s Gen-3 Alpha Turbo", creditsPerGen: 5 },
       { name: "Geração de 50 caracteres de Texto para Voz", creditsPerGen: 1 },
