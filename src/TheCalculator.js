@@ -124,6 +124,8 @@ const TOOLS_DATA = {
       { name: "Video - Google Veo 3 Fast", creditsPerGen: 80 },
       { name: "Video - Google Veo 3", creditsPerGen: 150 },
     ],
+     license: "Inclui lincença comercial nos planos pagos. ",
+     extraCredits: { amount: 80, price: 5 },
   },
   "Flux AI": {
     plans: [
