@@ -102,7 +102,7 @@ const TOOLS_DATA = {
       { name: "Plano Básico", credits: 150, price: 9 },
       { name: "Plano Pro", credits: 600, price: 29 },
       { name: "Plano Ultimate", credits: 1200, price: 49 },
-      { name: "Plano Creator", credits: 60000, price: 249 },
+      { name: "Plano Creator", credits: 6000, price: 249 },
     ],
     features: [
       { name: "Image - Higgsfield Soul", creditsPerGen: 2 },
